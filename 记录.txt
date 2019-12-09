@@ -1,0 +1,9 @@
+python版本：3.8.0
+
+1.template使用报错
+from web.template import ALLOWED_AST_NODES
+ALLOWED_AST_NODES.append('Constant')
+
+2.安装mysql
+
+pip install mysqlclient-1.4.6-cp38-cp38-win_amd64.whl
