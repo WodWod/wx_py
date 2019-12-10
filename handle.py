@@ -1,8 +1,10 @@
-#!/usr/bin/python
-# -*- coding: UTF-8 -*-
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 import hashlib
 import web
+import reply
+import receive
 
 class Handle(object):
     def GET(self):
@@ -20,9 +22,9 @@ class Handle(object):
             list.sort()
             sha1=hashlib.sha1()
             map(sha1.update,list)
-            hascode = sha1.hexdigest()
-            print('handle/GET func: hashcode, signature: ',hascode,signature)
-            if hascode==signature:
+            hashcode = sha1.hexdigest()
+            print('handle/GET func: hashcode, signature: ',hashcode,signature)
+            if hashcode==signature:
                 return echostr
             else:
                 return ''
@@ -30,3 +32,22 @@ class Handle(object):
             print('Error:',e)
             return 'Error'
             
+    def POST(self):
+        try:
+            webData=web.data()
+            print("Handle Post webData is ",webData)
+            
+            recMsg = receive.parse_xml(webData)
+            if isinstance(recMsg,receive.Msg) and recMsg.MsgType=='text':
+                toUser = recMsg.FromUserName
+                fromUser = recMsg.ToUserName
+                content = 'test'
+                replyMsg= reply.TextMsg(toUser,fromUser,content)
+                return replyMsg.send()
+            else:
+                print('不处理')
+                return 'success'
+
+        except BaseException as e:
+            print('Error:',e)
+            return 'Error'
