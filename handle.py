@@ -9,7 +9,24 @@ class Handle(object):
         try:
             data=web.input()
             if len(data)==0:
-                return '这是一个微信认证逻辑'
-            
-        except:
+                return 'this is a wx handle'
+            signature=data.signature
+            timestamp=data.timestamp
+            nonce=data.nonce
+            echostr=data.echostr
+            token='hellosu'
+
+            list= [token,timestamp,nonce]
+            list.sort()
+            sha1=hashlib.sha1()
+            map(sha1.update,list)
+            hascode = sha1.hexdigest()
+            print('handle/GET func: hashcode, signature: ',hascode,signature)
+            if hascode==signature:
+                return echostr
+            else:
+                return ''
+        except BaseException as e:
+            print('Error:',e)
+            return 'Error'
             
