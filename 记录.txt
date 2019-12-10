@@ -1,4 +1,5 @@
 python版本：3.8.0
+https://github.com/WodWod/wx_py.git
 
 1.template使用报错
 from web.template import ALLOWED_AST_NODES
