@@ -7,6 +7,7 @@
 
 import web 
 import hashlib
+import getAccessToken
 
 from handle import Handle
 
@@ -15,5 +16,7 @@ urls = (
 )
 
 if __name__ == '__main__':
+    # print('accessToken',getAccessToken.getData())
     app = web.application(urls, globals())
     app.run()
+    
