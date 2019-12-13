@@ -38,12 +38,17 @@ class Handle(object):
             print("Handle Post webData is ",webData)
             
             recMsg = receive.parse_xml(webData)
-            if isinstance(recMsg,receive.Msg) and recMsg.MsgType=='text':
+            if isinstance(recMsg,receive.Msg):
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
-                content = 'test'
-                replyMsg= reply.TextMsg(toUser,fromUser,content)
-                return replyMsg.send()
+                if recMsg.MsgType=='text': 
+                    content = 'test'
+                    replyMsg= reply.TextMsg(toUser,fromUser,content)
+                    return replyMsg.send()
+                elif recMsg.MsgType=='image':
+                    mediaId = recMsg.MediaId
+                    replyMsg= reply.ImageMsg(toUser,fromUser,mediaId)
+                    return replyMsg.send()
             else:
                 print('不处理')
                 return 'success'
