@@ -44,6 +44,8 @@ class Handle(object):
                 fromUser = recMsg.ToUserName
                 if recMsg.MsgType=='text': 
                     content = response(recMsg.Content)
+                    if content == '':
+                        content = '没有查询到序号对应内容\\n回复0可查询菜单主页'
                     index = content.find('|')
                     if not index == -1:
                         responseType = content[0:index]

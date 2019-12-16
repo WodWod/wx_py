@@ -55,8 +55,8 @@ menuDict = [
            ]
 def response(content):
     content = str(content).lower().strip()
-    # return searchLevel(content)
-    print('response:',searchLevel(content))
+    return searchLevel(content)
+    # print('response:',searchLevel(content))
     
 def searchLevel(content):
     if content == '0':
