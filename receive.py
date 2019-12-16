@@ -11,6 +11,8 @@ def parse_xml(web_data):
         return TextMsg(xmlData)
     elif msg_type == 'image':
         return ImageMsg(xmlData)
+    elif msg_type == 'event':
+        return EventMsg(xmlData)
 
 class Msg(object):
     def __init__(self,xmlData):
@@ -31,5 +33,10 @@ class  ImageMsg(Msg):
         self.PicUrl = xmlData.find('PicUrl').text
         self.MediaId = xmlData.find('MediaId').text
 
+class EventMsg(Msg):
+    def __init__(self,xmlData):
+        Msg.__init__(self, xmlData)
+        if xmlData.find('Event').text == 'subscribe':
+           self.Content = '回复"实验功能","",""可获取相应内容'.encode("utf-8")
 
 

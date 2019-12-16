@@ -22,7 +22,9 @@ class Basic:
     def get_access_token(self):
         if(self.__leftTime<10):
             self.__real_get_access_token()
+            print('已重置')
         
+        print('剩余有效时间：',self.__leftTime)
         return self.__accessToken
 
     def run(self): 
