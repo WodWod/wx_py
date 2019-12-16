@@ -9,6 +9,8 @@ urls = (
     '/get_access_token', 'Handle',
 )
 
+basic=Basic()
+
 class Handle(object):
     def GET(self):
         try:
@@ -21,5 +23,4 @@ class Handle(object):
 if __name__ == '__main__':
     app = web.application(urls, globals())
     app.run()  
-    basic=Basic()
     basic.run()
