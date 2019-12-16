@@ -11,11 +11,16 @@ urls = (
 
 basic=Basic()
 
+
 class Handle(object):
     def GET(self):
         try:
-            data=basic.get_access_token()
-            return data
+            if not basic.hasInit:
+                basic.run()  #需要调用一次来启动
+            else:
+                data=basic.get_access_token()
+                return data
+            
         except BaseException as e:
             print('Error:',e)
             return 'Error'
@@ -23,4 +28,4 @@ class Handle(object):
 if __name__ == '__main__':
     app = web.application(urls, globals())
     app.run()  
-    basic.run()
+   

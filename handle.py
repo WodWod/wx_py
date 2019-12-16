@@ -5,6 +5,7 @@ import hashlib
 import web
 import reply
 import receive
+from menu import response
 
 class Handle(object):
     def GET(self):
@@ -42,7 +43,7 @@ class Handle(object):
                 toUser = recMsg.FromUserName
                 fromUser = recMsg.ToUserName
                 if recMsg.MsgType=='text': 
-                    content = 'test'
+                    content = response(recMsg.Content)
                     replyMsg= reply.TextMsg(toUser,fromUser,content)
                     return replyMsg.send()
                 elif recMsg.MsgType=='image':
