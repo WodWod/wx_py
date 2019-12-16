@@ -9,6 +9,7 @@ menuDict = [
             {
             'id':'1',
             'name':'实验功能',
+            # 'response':{'type':'text','content':'还没写...'},
             'child':[
                         {
                             'id':'1a',
@@ -20,6 +21,7 @@ menuDict = [
             {
             'id':'2',
             'name':'游记',
+            'response':{'type':'text','content':'还没写...'},
             'child':[
                         {
                             'id':'21',
@@ -53,7 +55,8 @@ menuDict = [
            ]
 def response(content):
     content = str(content).lower().strip()
-    return searchLevel(content)
+    # return searchLevel(content)
+    print('response:',searchLevel(content))
     
 def searchLevel(content):
     if content == '0':
@@ -65,12 +68,11 @@ def searchLevel(content):
         response = ''
         for item_1 in menuDict:
             if item_1['id'] == content:
-                if item_1.get('child'):
+                if not item_1.get('response'):
                     for item_2 in item_1['child']:
                         response += item_2['id'] +'.'+item_2['name']
                 else:
                     response = item_1['response']['type']+ '|' + item_1['response']['content']
-        
         return response
 
     elif len(content)==2:
@@ -79,16 +81,16 @@ def searchLevel(content):
         response = ''
         for item_1 in menuDict:
             if item_1['id'] == first:
-                if item_1.get('child'):
+                if not item_1.get('response'):
                     for item_2 in item_1['child']:
                         if item_2['id'] == second:
-                            if item_2.get('child'):
+                            if not item_2.get('response'):
                                 for item_3 in item_2['child']:
                                     response = item_3['id'] + '.' + item_3['name']
                             else:
-                                response = item_2['response']['type']+ '|' + item_2['response']['content']
-                                
+                                response = item_2['response']['type']+ '|' + item_2['response']['content']               
         return response
+
     elif len(content)==3:
         first = content[0:1]
         second = content[0:2]
@@ -96,12 +98,12 @@ def searchLevel(content):
         response = ''
         for item_1 in menuDict:
             if item_1['id'] == first:
-                if item_1.get('child'):
+                if not item_1.get('response'):
                     for item_2 in item_1['child']:
                         if item_2['id'] == second:
-                            if item_2.get('child'):
+                            if not item_2.get('response'):
                                 for item_3 in item_2['child']:
-                                    if item_3.get('child'):
+                                    if not item_3.get('response'):
                                         pass
                                     else:
                                         if item_3['id'] == third:
@@ -109,12 +111,11 @@ def searchLevel(content):
         return response
                 
 
-# response('1')
-# response('1a')
-# response('2')
-# response('21')
-# response('21a')
-# response('3')
+response('0')
+response('1')
+response('2')
+response('3')
+
 
 
 # from urllib import request,parse

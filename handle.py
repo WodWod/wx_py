@@ -44,12 +44,29 @@ class Handle(object):
                 fromUser = recMsg.ToUserName
                 if recMsg.MsgType=='text': 
                     content = response(recMsg.Content)
-                    replyMsg= reply.TextMsg(toUser,fromUser,content)
+                    index = content.find('|')
+                    if not index == -1:
+                        responseType = content[0:index]
+                        content = content[index+1:]
+                        if responseType == 'image':
+                            replyMsg= reply.ImageMsg(toUser,fromUser,content)
+                        else:
+                            replyMsg= reply.TextMsg(toUser,fromUser,content)
+                    else:
+                        replyMsg= reply.TextMsg(toUser,fromUser,content)
                     return replyMsg.send()
                 elif recMsg.MsgType=='image':
                     mediaId = recMsg.MediaId
                     replyMsg= reply.ImageMsg(toUser,fromUser,mediaId)
                     return replyMsg.send()
+                elif recMsg.MsgType=='event':
+                    if recMsg.EventType=='subscribe': #订阅事件
+                        pre = '欢迎关注无名小屋\\n'
+                        content = response('0') + '\\n'
+                        end = '回复序号即可获取下级菜单或详情'
+                        content = pre + content + end
+                        replyMsg= reply.TextMsg(toUser,fromUser,content)
+                        return replyMsg.send()
             else:
                 print('不处理')
                 return 'success'

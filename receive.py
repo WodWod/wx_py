@@ -25,7 +25,7 @@ class Msg(object):
 class TextMsg(Msg):
     def __init__(self,xmlData):
         Msg.__init__(self, xmlData)
-        self.Content = xmlData.find('Content').text.encode("utf-8")
+        self.Content = xmlData.find('Content').text  #.encode("utf-8")
 
 class  ImageMsg(Msg):
     def __init__(self,xmlData):
@@ -36,7 +36,7 @@ class  ImageMsg(Msg):
 class EventMsg(Msg):
     def __init__(self,xmlData):
         Msg.__init__(self, xmlData)
-        if xmlData.find('Event').text == 'subscribe':
-           self.Content = '回复"实验功能","",""可获取相应内容'.encode("utf-8")
+        self.EventType = xmlData.find('Event').text  #'subscribe'
+           
 
 
