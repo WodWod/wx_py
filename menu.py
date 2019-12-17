@@ -14,7 +14,13 @@ menuDict = [
                         {
                             'id':'1a',
                             'name':'文艺青年相亲指南',
-                            'response':{'type':'image','content':'RaBXyHYVj5Fq-Ijt5XhS-XPndEjPgIvm-e_FPfK5XrE'}
+                            'response':{
+                                        'type':'news',
+                                        'Title':'测试素材管理-图文消息',
+                                        'Description':'测试素材管理-图文消息（2019-12-13）',
+                                        'PicUrl':'http://mmbiz.qpic.cn/mmbiz_jpg/8mekopFXGZGwhDUSCeXJ5c0FnyBiblHGq5oL0ThM0g8aPoB9yTvzhlGmwlTibWEG9iczFq4f9hLTff4wpohibYtj2A/0?wx_fmt=jpeg',
+                                        'Url':'http://mp.weixin.qq.com/s?__biz=MzAxODYyNTI0Mg==&mid=100000002&idx=1&sn=bdf99302a1b41816f425da4ec5bebb6c&chksm=1bd226b72ca5afa1d619665fe10b74773b59c070bed5c063571813f7a2711311657f9fa92a3d#rd',
+                                        }
                         }
                 ]
             },
@@ -55,14 +61,15 @@ menuDict = [
            ]
 def response(content):
     content = str(content).lower().strip()
-    return searchLevel(content)
     # print('response:',searchLevel(content))
+    return searchLevel(content)
+    
     
 def searchLevel(content):
     if content == '0':
         response = ''
         for item_1 in menuDict:
-            response += item_1['id']+'.'+item_1['name']
+            response += item_1['id']+'.'+item_1['name']+'\n'
         return response
     elif len(content)==1 and  not content == '0':
         response = ''
@@ -70,9 +77,9 @@ def searchLevel(content):
             if item_1['id'] == content:
                 if not item_1.get('response'):
                     for item_2 in item_1['child']:
-                        response += item_2['id'] +'.'+item_2['name']
+                        response += item_2['id'] +'.'+item_2['name']+'\n'
                 else:
-                    response = item_1['response']['type']+ '|' + item_1['response']['content']
+                    response = item_1['response']
         return response
 
     elif len(content)==2:
@@ -86,9 +93,9 @@ def searchLevel(content):
                         if item_2['id'] == second:
                             if not item_2.get('response'):
                                 for item_3 in item_2['child']:
-                                    response = item_3['id'] + '.' + item_3['name']
+                                    response = item_3['id'] + '.' + item_3['name']+'\n'
                             else:
-                                response = item_2['response']['type']+ '|' + item_2['response']['content']               
+                                response = item_2['response']
         return response
 
     elif len(content)==3:
@@ -107,14 +114,15 @@ def searchLevel(content):
                                         pass
                                     else:
                                         if item_3['id'] == third:
-                                            response = item_3['response']['type']+ '|' + item_3['response']['content']
+                                            response = item_3['response']
         return response
                 
 
-response('0')
-response('1')
-response('2')
-response('3')
+# response('0')
+# response('1')
+# response('1a')
+# response('2')
+# response('3')
 
 
 

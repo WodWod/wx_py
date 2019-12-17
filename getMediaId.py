@@ -21,7 +21,8 @@ class MediaList(object):
         with request.urlopen(postUrl,data=postData.encode('utf-8')) as f:
             response =  json.loads(f.read().decode('utf-8'))
             list1 = '图文消息列表: \n'
+            print(response)
             for media in response['item']:
-               list1 += ('id:%s;title:%s \n' % (media['media_id'],media['content']['news_item'][0]['title'])) 
+               list1 += ('media_id:%s\ntitle:%s\ndigest:%s\nthumb_url:%s\nurl:%s\n' % (media['media_id'],media['content']['news_item'][0]['title'],media['content']['news_item'][0]['digest'],media['content']['news_item'][0]['thumb_url'],media['content']['news_item'][0]['url'])) 
 
             return list1.encode('gb2312')

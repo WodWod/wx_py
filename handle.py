@@ -46,14 +46,14 @@ class Handle(object):
                     content = response(recMsg.Content)
                     if content == '':
                         content = '没有查询到序号对应内容\n回复0可查询菜单主页'
-                    index = content.find('|')
-                    if not index == -1:
-                        responseType = content[0:index]
-                        content = content[index+1:]
-                        if responseType == 'image':
-                            replyMsg= reply.ImageMsg(toUser,fromUser,content)
-                        else:
-                            replyMsg= reply.TextMsg(toUser,fromUser,content)
+                    if  content.get('type') :
+                        responseType = content['type']
+                        if responseType == 'text':
+                            replyMsg= reply.TextMsg(toUser,fromUser,content['content'])
+                        elif responseType == 'image':
+                            replyMsg= reply.ImageMsg(toUser,fromUser,content['id'])
+                        elif responseType == 'news':
+                            replyMsg= reply.NewsMsg(toUser,fromUser,**content)
                     else:
                         replyMsg= reply.TextMsg(toUser,fromUser,content)
                     return replyMsg.send()
