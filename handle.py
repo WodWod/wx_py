@@ -45,7 +45,7 @@ class Handle(object):
                 if recMsg.MsgType=='text': 
                     content = response(recMsg.Content)
                     if content == '':
-                        content = '没有查询到序号对应内容\\n回复0可查询菜单主页'
+                        content = '没有查询到序号对应内容\n回复0可查询菜单主页'
                     index = content.find('|')
                     if not index == -1:
                         responseType = content[0:index]
@@ -63,8 +63,8 @@ class Handle(object):
                     return replyMsg.send()
                 elif recMsg.MsgType=='event':
                     if recMsg.EventType=='subscribe': #订阅事件
-                        pre = '欢迎关注无名小屋\\n'
-                        content = response('0') + '\\n'
+                        pre = '欢迎关注无名小屋\n'
+                        content = response('0') + '\n'
                         end = '回复序号即可获取下级菜单或详情'
                         content = pre + content + end
                         replyMsg= reply.TextMsg(toUser,fromUser,content)

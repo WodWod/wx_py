@@ -14,7 +14,7 @@ menuDict = [
                         {
                             'id':'1a',
                             'name':'文艺青年相亲指南',
-                            'response':{'type':'image','content':'还在写...'}
+                            'response':{'type':'image','content':'RaBXyHYVj5Fq-Ijt5XhS-XPndEjPgIvm-e_FPfK5XrE'}
                         }
                 ]
             },

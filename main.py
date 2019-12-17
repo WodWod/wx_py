@@ -10,9 +10,11 @@ import hashlib
 import getAccessToken
 
 from handle import Handle
+from getMediaId import MediaList
 
 urls = (
     '/wx', 'Handle',
+    '/get_mediaid', 'MediaList',
 )
 
 if __name__ == '__main__':
