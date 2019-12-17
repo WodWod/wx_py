@@ -13,7 +13,7 @@ menuDict = [
             'child':[
                         {
                             'id':'1a',
-                            'name':'文艺青年相亲指南',
+                            'name':'文艺青年相亲指南(还没写好)',
                             'response':{
                                         'type':'news',
                                         'Title':'测试素材管理-图文消息',

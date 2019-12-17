@@ -46,7 +46,7 @@ class Handle(object):
                     content = response(recMsg.Content)
                     if content == '':
                         content = '没有查询到序号对应内容\n回复0可查询菜单主页'
-                    if  content.get('type') :
+                    if  isinstance(content,dict) :
                         responseType = content['type']
                         if responseType == 'text':
                             replyMsg= reply.TextMsg(toUser,fromUser,content['content'])

@@ -66,7 +66,7 @@ class NewsMsg(Msg):
         <ArticleCount>1</ArticleCount>
         <Articles>
         <item>
-        <Title><![CDATA[{Title}]></Title>
+        <Title><![CDATA[{Title}]]></Title>
         <Description><![CDATA[{Description}]]></Description>
         <PicUrl><![CDATA[{PicUrl}]]></PicUrl>
         <Url><![CDATA[{Url}]]></Url>
@@ -74,4 +74,5 @@ class NewsMsg(Msg):
         </Articles>
         </xml>
         """
+        print(XmlForm.format(**self.__dict))
         return XmlForm.format(**self.__dict)
