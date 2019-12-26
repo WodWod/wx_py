@@ -8,6 +8,7 @@
 import web 
 from img_bg_list import ImgBgList
 from input_suggest import InputSuggest
+from submit import Submit
 
 urls = (
     '/dbmeeting/get_img_bg', 'ImgBgList',

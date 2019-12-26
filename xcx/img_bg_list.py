@@ -11,7 +11,7 @@ cursor = conn.cursor()
 class ImgBgList(object):
     def GET(self):
         # data=web.input()
-        cursor.execute('select distinct(img_src),person_name from movie_person order by person_name limit 100')
+        cursor.execute('select distinct(img_src),person_name from movie_person order by person_name limit 200')
         values = cursor.fetchall()
         list=[]
         for value in values:

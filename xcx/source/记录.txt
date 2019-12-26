@@ -1,0 +1,1 @@
+1.wx.request快速请求mysql连接会断掉???

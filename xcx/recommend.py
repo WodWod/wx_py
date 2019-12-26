@@ -67,10 +67,11 @@ class Recommend(object):
 
     def get_data(self):
         self.__filter_data()
-        print(self.__person_list)
+        return self.__person_list
+        # print(self.__person_list)
 
-test= Recommend('{"movie":["25934014","3824274","27610855","26874505","27594217","10512661"],"book":[],"music":[]}')
-test.get_data()
+# test= Recommend('{"movie":["25934014","3824274","27610855","26874505","27594217","10512661"],"book":[],"music":[]}')
+# test.get_data()
 
 
 
