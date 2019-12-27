@@ -16,6 +16,8 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 AppSecret  8ca156f62ae8c7626493b13d03737222
 
+4.token验证失败
+https://blog.csdn.net/qq_39866513/article/details/83218731
 
 小程序
 
