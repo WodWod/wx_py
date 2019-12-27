@@ -15,3 +15,11 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 
 AppSecret  8ca156f62ae8c7626493b13d03737222
+
+
+小程序
+
+1.wx.request快速请求mysql连接会断掉???
+
+2.开启https
+http://webpy.org/cookbook/ssl?spm=a2c6h.13066369.0.0.4454288e0woMU4

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import web
 import json
-from recommend import Recommend
+from xcx.recommend import Recommend
 
 class Submit(object):
     def POST(self):

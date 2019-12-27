@@ -4,7 +4,7 @@
 import mysql.connector 
 import json
 import math
-from config import config 
+from xcx.config import config 
 
 conn = mysql.connector.connect(host=config['host'],user=config['user'], password=config['password'], database=config['database'])
 cursor = conn.cursor()

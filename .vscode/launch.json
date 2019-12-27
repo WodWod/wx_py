@@ -5,6 +5,19 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: 80",
+            "type": "python",
+            "request": "attach",
+            "port": 8888,
+            "host": "localhost",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "."
+                }
+            ]
+        },
+        {
             "name": "Python: 当前文件",
             "type": "python",
             "request": "launch",
