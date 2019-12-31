@@ -20,7 +20,7 @@ class InputSuggest(object):
             else:
                 return '[]'
         except BaseException as e:
-            print("Error:",e) 
+            print("InputSuggest Error:",e) 
             conn = mysql.connector.connect(host=config['host'],user=config['user'], password=config['password'], database=config['database'])
             cursor = conn.cursor()
             
