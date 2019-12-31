@@ -66,6 +66,13 @@ class Recommend(object):
                 person['rate'] = math.ceil((person['score']/total_score)*100)
 
     def get_data(self):
+        global conn,cursor
+        try:
+            cursor = conn.cursor()
+        except BaseException as e:
+            print("Recommend Error:",e) 
+            conn = mysql.connector.connect(host=config['host'],user=config['user'], password=config['password'], database=config['database'])
+            cursor = conn.cursor()
         self.__filter_data()
         return self.__person_list
         # print(self.__person_list)

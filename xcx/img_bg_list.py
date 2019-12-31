@@ -11,6 +11,13 @@ cursor = conn.cursor()
 class ImgBgList(object):
     def GET(self):
         # data=web.input()
+        global conn,cursor
+        try:
+            cursor = conn.cursor()
+        except BaseException as e:
+            print("ImgBgList Error:",e) 
+            conn = mysql.connector.connect(host=config['host'],user=config['user'], password=config['password'], database=config['database'])
+            cursor = conn.cursor()
         cursor.execute('select distinct(img_src),person_name from movie_person order by person_name limit 200')
         values = cursor.fetchall()
         list=[]
