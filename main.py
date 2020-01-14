@@ -16,6 +16,7 @@ from cheroot.ssl.builtin import BuiltinSSLAdapter
 from xcx.img_bg_list import ImgBgList
 from xcx.input_suggest import InputSuggest
 from xcx.submit import Submit
+from xcx.poem import Poem
 
 # HTTPServer.ssl_adapter = BuiltinSSLAdapter(
 #     certificate='/certificates/Nginx/1_www.onepieceofsu.cn_bundle.crt',
@@ -27,7 +28,8 @@ urls = (
     '/get_mediaid', 'MediaList',
     '/dbmeeting/get_img_bg', 'ImgBgList',
     '/dbmeeting/input_suggest', 'InputSuggest',
-    '/dbmeeting/submit', 'Submit'
+    '/dbmeeting/submit', 'Submit',
+    '/dbmeeting/poem','Poem'
 )
 
 if __name__ == '__main__':
