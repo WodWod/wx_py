@@ -68,7 +68,7 @@ class Recommend(object):
     def get_data(self):
         global conn,cursor
         try:
-            cursor = conn.cursor()
+            cursor.execute('select person_id,person_name,rating,img_src from movie_person limit 1')
         except BaseException as e:
             print("Recommend Error:",e) 
             conn = mysql.connector.connect(host=config['host'],user=config['user'], password=config['password'], database=config['database'])
